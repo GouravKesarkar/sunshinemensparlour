@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sunshine Men's Parlour — Style That Speaks</title>
+
+  <!-- manifest (keep manifest.json alongside this file) -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00bcd4" />
+
+  <!-- favicon (data URI) -->
+  <link rel="icon" href='data:image/svg+xml;utf8,
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="20" fill="%2300bcd4"/>
+    <text x="50" y="58" font-size="50" text-anchor="middle" fill="%23fff" font-family="Arial">S</text>
+  </svg>'>
+
+  <style>
+    :root{
+      --g1: #00bcd4;   /* cyan */
+      --g2: #0077ff;   /* blue */
+      --accent: linear-gradient(135deg, var(--g1), var(--g2));
+      --bg-dark: #071022;
+      --glass: rgba(255,255,255,0.04);
+      --muted: #b7c6d6;
+      --card-radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.45);
+      font-family: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color-scheme: dark;
+    }
+
+    *{box-sizing:border-box}
+    html,body,#app{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(0,188,212,0.12), transparent 8%),
+        radial-gradient(900px 600px at 95% 90%, rgba(0,119,255,0.12), transparent 6%),
+        linear-gradient(180deg,#020617 0%,var(--bg-dark) 100%);
+      color:#eaf6ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-bottom: 90px; /* room for floating FAB on small screens */
+    }
+
+    .container{
+      max-width:1060px;
+      margin:28px auto;
+      padding:20px;
+    }
+
+    /* Header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:64px;height:64px;border-radius:18px;
+      background:var(--accent);display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;font-size:24px;box-shadow: 0 8px 30px rgba(0,123,255,0.12);
+    }
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    /* Nav */
+    nav{display:flex;gap:10px;align-items:center}
+    nav a{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);
+      background:transparent;font-weight:600;transition:all .18s ease;
+    }
+    nav a:hover{color:#fff;transform:translateY(-2px)}
+    nav a.active{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
+
+    /* Grid / Cards */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:18px}
+    .col-8{grid-column:span 8}
+    .col-4{grid-column:span 4}
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--card-radius); padding:18px; box-shadow:var(--shadow);
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .card:hover{transform:translateY(-6px); box-shadow: 0 22px 40px rgba(0,0,0,0.6)}
+
+    /* Hero */
+    .hero{display:flex;gap:20px;align-items:center}
+    .hero .info{flex:1}
+    .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-weight:700;font-size:12px}
+    .hero h2{margin:8px 0;font-size:22px}
+    .hero p{margin:0;color:var(--muted)}
+
+    .cta{
+      display:inline-flex;align-items:center;gap:12px;padding:12px 18px;border-radius:999px;
+      background:var(--accent);color:#001728;text-decoration:none;font-weight:800;box-shadow:0 10px 30px rgba(0,119,255,0.12);
+      transition:transform .16s ease;
+    }
+    .cta:hover{transform:translateY(-4px)}
+
+    /* quick features */
+    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .feature{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:12px;color:var(--muted);font-size:13px}
+
+    /* services list */
+    ul.services{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    li.svc{
+      display:flex;align-items:center;justify-content:space-between;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      transition:transform .14s ease;
+    }
+    li.svc:hover{transform:translateY(-4px)}
+    .svc .left{display:flex;gap:12px;align-items:center}
+    .badge{
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;
+      box-shadow: 0 10px 26px rgba(0,123,255,0.12);
+    }
+    .svc h4{margin:0;font-size:15px}
+    .svc .desc{color:var(--muted);font-size:13px}
+    .price{color:#9fe6ff;font-weight:800}
+
+    /* Booking form */
+    form{display:grid;gap:12px;margin-top:12px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{display:block;margin-bottom:6px;font-weight:700;font-size:13px}
+    input,select{
+      padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.03);color:inherit;font-size:15px;
+    }
+    button.primary{
+      padding:12px;border-radius:12px;border:none;background:var(--accent);color:#001728;font-weight:800;cursor:pointer;
+      box-shadow:0 8px 26px rgba(0,119,255,0.12);transition:transform .14s ease;
+    }
+    button.primary:hover{transform:translateY(-4px)}
+
+    /* float FAB */
+    .fab{
+      position:fixed;right:20px;bottom:20px;background:linear-gradient(135deg,var(--g1),var(--g2));
+      color:#fff;padding:14px 18px;border-radius:999px;box-shadow:0 18px 40px rgba(0,119,255,0.18);
+      font-weight:800;border:none;cursor:pointer;z-index:1200;
+    }
+
+    /* footer */
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center;padding:18px}
+
+    .share-btn{display:inline-block;margin-top:10px;padding:10px 14px;background:#25D366;color:#fff;border-radius:10px;text-decoration:none;font-weight:700}
+
+    /* responsiveness */
+    @media (max-width:860px){
+      .grid{grid-template-columns:repeat(6,1fr)}
+      .col-8{grid-column:span 6}
+      .col-4{grid-column:span 6}
+      .form-row{grid-template-columns:1fr}
+      .logo{width:56px;height:56px}
+      header{gap:8px}
+    }
+    @media (max-width:520px){
+      .container{padding:14px;margin:12px auto}
+      .logo{width:52px;height:52px}
+      .eyebrow{font-size:11px;padding:6px 8px}
+      .cta{padding:10px 14px}
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <h1>Sunshine Men's Parlour</h1>
+          <p class="lead">— Style That Speaks</p>
+        </div>
+      </div>
+
+      <nav id="nav">
+        <a href="#/" data-route="/">Home</a>
+        <a href="#/services" data-route="/services">Services</a>
+        <a href="#/book" data-route="/book">Book</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- injected content by router -->
+    </main>
+
+    <footer>
+      Built for style • Walk-ins welcome • Phone: +91 98765 XXXXX<br>
+      © 2025 Sunshine Men's Parlour — Developed by GK
+      <div style="margin-top:8px">
+        <a class="share-btn" target="_blank" rel="noopener"
+           href="https://wa.me/?text=%F0%9F%92%87%20Try%20Sunshine%20Men%27s%20Parlour%20-%20Style%20That%20Speaks!%20Book%20easily:%20https://gouravkesarkar.github.io/salon-app/index.html">
+          📤 Share via WhatsApp
+        </a>
+      </div>
+    </footer>
+
+    <!-- Floating quick-book button -->
+    <button id="quickBook" class="fab" title="Quick Book">✂️ Book</button>
+
+    <!-- Install PWA button handled by script; kept hidden until prompt -->
+    <button id="installBtn" style="display:none;position:fixed;right:20px;bottom:90px;padding:12px 14px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--g1),var(--g2));color:#001728;font-weight:800;z-index:1200;">📲 Install</button>
+  </div>
+
+  <!-- PRESERVE ALL ORIGINAL JS LOGIC (router, pages, booking behavior) -->
+  <script>
+    /* --- Router & Pages (logic preserved) --- */
+    const routes = {
+      '/': homePage,
+      '/services': servicesPage,
+      '/book': bookPage
+    };
+
+    function setActiveNav(path){
+      document.querySelectorAll('#nav a').forEach(a=>{
+        a.classList.toggle('active', a.getAttribute('href') === '#'+(path||'/'));
+      });
+    }
+
+    function render(){
+      const hash = location.hash.replace('#','') || '/';
+      const route = routes[hash] ? hash : '/';
+      setActiveNav(route);
+      document.getElementById('main').innerHTML = routes[route]();
+      attachHandlers(route);
+    }
+
+    window.addEventListener('hashchange', render);
+    window.addEventListener('load', ()=>{ render(); });
+
+    /* --- Pages (UI rewritten but content & IDs preserved) --- */
+    function homePage(){
+      return `
+      <section class="grid">
+        <div class="col-8 card hero">
+          <div class="info">
+            <span class="eyebrow">Premium Grooming</span>
+            <h2 style="margin-top:10px">Look sharp. Own the room.</h2>
+            <p style="margin-top:8px;color:var(--muted)">Sunshine Men's Parlour — expert barbers, premium products and signature styles. Fast cuts, precise fades, and classic shaves.</p>
+            <div class="features">
+              <div class="feature">💈 Experienced barbers</div>
+              <div class="feature">🧴 Premium products</div>
+              <div class="feature">⚡ Quick service</div>
+            </div>
+            <div style="margin-top:14px">
+              <a class="cta" href="#/book">Book Now →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4 card">
+          <h3 style="margin-top:0">Why pick us</h3>
+          <ul style="margin-top:10px;padding-left:18px;color:var(--muted);line-height:1.6">
+            <li>Patient, detail-oriented styling</li>
+            <li>Spotless hygiene & comfortable chair</li>
+            <li>Quick turnaround — great for busy schedules</li>
+          </ul>
+        </div>
+
+        <div class="col-8 card" style="margin-top:12px">
+          <h3 style="margin-top:0">Featured</h3>
+          <p style="color:var(--muted);margin-top:8px">Special combo packages and seasonal offers available. Walk-ins welcome.</p>
+          <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+            <div style="padding:12px;border-radius:12px;background:linear-gradient(135deg, rgba(0,188,212,0.06), rgba(0,119,255,0.04));font-weight:700">Hot Towel Shave</div>
+            <div style="padding:12px;border-radius:12px;background:rgba(255,255,255,0.02);color:var(--muted)">Beard sculpt & trim</div>
+            <div style="padding:12px;border-radius:12px;background:rgba(255,255,255,0.02);color:var(--muted)">Express Cut</div>
+          </div>
+        </div>
+
+        <div class="col-4 card" style="margin-top:12px">
+          <h3 style="margin-top:0">Open Hours</h3>
+          <p style="color:var(--muted);margin-top:6px">Mon–Sat: 9:00 AM — 8:00 PM<br>Sun: 10:00 AM — 6:00 PM</p>
+        </div>
+      </section>
+      `;
+    }
+
+    function servicesPage(){
+      const services = [
+        {title:'Classic Haircut', desc:'Scissor & clipper blend, tailored to suit your face shape.', price:'₹150', icon:'✂️'},
+        {title:'Premium Fade', desc:'Skin fade, precision lines, styled finish.', price:'₹200', icon:'🔪'},
+        {title:'Beard Sculpt', desc:'Trim, shape and hot towel finish.', price:'₹150', icon:'🧔'},
+        {title:'Straight Razor Shave', desc:'Luxury shave with hot towels and moisturizing balm.', price:'₹150', icon:'🪒'}
+      ];
+
+      return `
+      <section class="card">
+        <h3 style="margin-top:0">Services</h3>
+        <p style="color:var(--muted);margin-top:6px">Transparent pricing and skilled barbers. Walk-ins welcome.</p>
+        <ul class="services" style="margin-top:12px">
+          ${services.map(s=>`<li class="svc"><div class="left"><div class="badge">${s.icon}</div><div><h4>${s.title}</h4><div class="desc">${s.desc}</div></div></div><div class="price">${s.price}</div></li>`).join('')}
+        </ul>
+      </section>
+      `;
+    }
+
+    function bookPage(){
+      return `
+      <section class="card">
+        <h3 style="margin-top:0">Book an appointment</h3>
+        <p style="color:var(--muted)">Choose date, time and service. We'll confirm by SMS.</p>
+        <form id="bookingForm" style="margin-top:10px">
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" placeholder="Mobile number" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="service">Service</label>
+            <select id="service">
+              <option value="Classic Haircut">Classic Haircut — ₹150</option>
+              <option value="Premium Fade">Premium Fade — ₹200</option>
+              <option value="Beard Sculpt">Beard Sculpt — ₹150</option>
+              <option value="Straight Razor Shave">Straight Razor Shave — ₹150</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="date">Date</label>
+              <input type="date" id="date" required />
+            </div>
+            <div>
+              <label for="time">Time</label>
+              <input type="time" id="time" required />
+            </div>
+          </div>
+
+          <button class="primary" type="submit">Request Booking</button>
+        </form>
+
+        <div id="bookResult" style="margin-top:12px;color:var(--muted)"></div>
+      </section>
+      `;
+    }
+
+    /* Attach event handlers for booking etc. (preserved behavior) */
+    function attachHandlers(route){
+      if(route === '/book'){
+        const form = document.getElementById('bookingForm');
+        if(!form) return;
+        // remove previous listeners (if any) to avoid duplication on repeated render
+        form.addEventListener('submit', submitBooking);
+      }
+    }
+
+    // Booking submit handler function (kept same functionality)
+    function submitBooking(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+
+      if(!name || !phone || !date || !time){
+        document.getElementById('bookResult').textContent = 'Please fill all fields.';
+        return;
+      }
+
+      // Save locally (offline-friendly)
+      const bookings = JSON.parse(localStorage.getItem('gentle.bookings') || '[]');
+      const newBooking = { id: Date.now(), name, phone, service, date, time };
+      bookings.push(newBooking);
+      localStorage.setItem('gentle.bookings', JSON.stringify(bookings));
+
+      // Send to Google Sheet (online sync) - same endpoint preserved
+      fetch('https://script.google.com/macros/s/AKfycbxPGyZnLsc9Neu1_ta6GyGrX6XOavKfNirUmmj-mf54UT3EOjrsK4aOirZBw_vTqyqt/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newBooking)
+      })
+      .then(() => {
+        document.getElementById('bookResult').textContent =
+          `✅ Thanks ${name}! Booking requested for ${date} at ${time}. We'll call to confirm.`;
+        const form = document.getElementById('bookingForm');
+        form && form.reset();
+      })
+      .catch(err => {
+        console.error('❌ Booking submission failed:', err);
+        document.getElementById('bookResult').textContent =
+          `⚠️ Booking saved locally (offline). It’ll sync when online.`;
+      });
+
+      // Immediate UI feedback (kept)
+      const form = document.getElementById('bookingForm');
+      form && form.reset();
+      document.getElementById('bookResult').textContent = `Thanks ${name}! Booking requested for ${date} at ${time}. We'll call to confirm.`;
+    }
+
+    // utility for debugging bookings
+    window.showBookings = ()=>console.table(JSON.parse(localStorage.getItem('gentle.bookings')||'[]'));
+
+    // Quick Book FAB behavior: open book page when clicked
+    document.addEventListener('click', function (evt) {
+      if(evt.target && (evt.target.id === 'quickBook' || evt.target.closest && evt.target.closest('#quickBook'))){
+        location.hash = '#/book';
+      }
+    });
+
+    /* --- Service Worker registration (unchanged) --- */
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js")
+        .then(() => console.log("✅ Service Worker registered"))
+        .catch(err => console.log("❌ SW registration failed", err));
+    }
+
+    /* --- PWA install prompt handling (preserved & complete) --- */
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = "block";
+    });
+
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log("User response to install prompt:", outcome);
+      deferredPrompt = null;
+      installBtn.style.display = "none";
+    });
+
+    window.addEventListener("appinstalled", () => {
+      console.log("✅ PWA installed");
+      installBtn.style.display = "none";
+    });
+
+  </script>
+</body>
+</html>

@@ -84,7 +84,8 @@
     .col-4{grid-column:span 4}
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
       border-radius: var(--card-radius); padding:18px; box-shadow:var(--shadow);
       transition:transform .22s ease, box-shadow .22s ease;
     }
@@ -190,7 +191,7 @@
     </main>
 
     <footer>
-      Built for style • Walk-ins welcome • Phone: +91 98765 XXXXX<br>
+      Built for style • Walk-ins welcome • Phone: +91 98237 80483<br>
       © 2025 Sunshine Men's Parlour — Developed by GK
       <div style="margin-top:8px">
         <a class="share-btn" target="_blank" rel="noopener"
@@ -274,7 +275,7 @@
 
         <div class="col-4 card" style="margin-top:12px">
           <h3 style="margin-top:0">Open Hours</h3>
-          <p style="color:var(--muted);margin-top:6px">Mon–Sat: 9:00 AM — 8:00 PM<br>Sun: 10:00 AM — 6:00 PM</p>
+          <p style="color:var(--muted);margin-top:6px">Mon–Fri: 10:00 AM — 8:00 PM<br>Sat-Sun: 10:00 AM — 10:00 PM</p>
         </div>
       </section>
       `;
@@ -282,11 +283,56 @@
 
     function servicesPage(){
       const services = [
-        {title:'Classic Haircut', desc:'Scissor & clipper blend, tailored to suit your face shape.', price:'₹150', icon:'✂️'},
-        {title:'Premium Fade', desc:'Skin fade, precision lines, styled finish.', price:'₹200', icon:'🔪'},
-        {title:'Beard Sculpt', desc:'Trim, shape and hot towel finish.', price:'₹150', icon:'🧔'},
-        {title:'Straight Razor Shave', desc:'Luxury shave with hot towels and moisturizing balm.', price:'₹150', icon:'🪒'}
-      ];
+      {
+        title: 'Classic Haircut',
+        desc: 'Precision haircut using scissors and clippers for a timeless look.',
+        price: 'Starting ₹100',
+        icon: '✂️'
+      },
+      {
+        title: 'Premium Fade',
+        desc: 'Skin fade, precision lines, styled finish..',
+        price: 'Starting ₹100',
+        icon: '🔌'
+      },
+      {
+        title: 'Beard Sculpt',
+        desc: 'Expert beard trimming and shaping with a smooth finish.',
+        price: 'Starting ₹200',
+        icon: '🧔‍♂️'
+      },
+      {
+        title: 'Hair Colouring',
+        desc: 'Professional hair coloring for a refreshed and vibrant look.',
+        price: 'Starting ₹200',
+        icon: '🎨'
+      },
+      {
+        title: 'Face Massage',
+        desc: 'Relaxing facial massage to relieve stress and improve skin circulation.',
+        price: 'Starting ₹150',
+        icon: '💆‍♂️'
+      },
+      {
+        title: 'Facial',
+        desc: 'Deep cleansing and rejuvenating facial treatment for healthy skin.',
+        price: 'Starting ₹150',
+        icon: '🧖‍♂️'
+      },
+      {
+        title: 'Scrubbing',
+        desc: 'Gentle exfoliation to remove dead skin and refresh your face.',
+        price: 'Starting ₹150',
+        icon: '🧽'
+      },
+      {
+        title: 'Bleaching',
+        desc: 'Professional bleaching to brighten and even out skin tone.',
+        price: 'Starting ₹150',
+        icon: '✨'
+      }
+    ];
+
 
       return `
       <section class="card">
@@ -319,10 +365,14 @@
           <div>
             <label for="service">Service</label>
             <select id="service">
-              <option value="Classic Haircut">Classic Haircut — ₹150</option>
-              <option value="Premium Fade">Premium Fade — ₹200</option>
-              <option value="Beard Sculpt">Beard Sculpt — ₹150</option>
-              <option value="Straight Razor Shave">Straight Razor Shave — ₹150</option>
+              <option value="Classic Haircut">Classic Haircut</option>
+              <option value="Premium Fade">Premium Fade</option>
+              <option value="Beard Sculpt">Beard Sculpt</option>
+              <option value="Hair Colouring">Hair Colouring</option>
+              <option value="Face Massage">Face Massage</option>
+              <option value="Facial">Facial</option>
+              <option value="Scrubbing">Scrubbing</option>
+              <option value="Bleaching">Bleaching</option>
             </select>
           </div>
 

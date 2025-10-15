@@ -62,11 +62,22 @@
       flex-wrap:wrap;
     }
     .brand{display:flex;align-items:center;gap:14px}
-    .logo{
-      width:64px;height:64px;border-radius:18px;
-      background:var(--accent);display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:800;font-size:24px;box-shadow: 0 8px 30px rgba(0,123,255,0.12);
+    
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      overflow: hidden;             /* ensures rounded corners for the image */
+      box-shadow: 0 8px 30px rgba(0,123,255,0.12);
     }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;            /* scales image nicely inside */
+      display: block;
+    }
+
     h1{font-size:20px;margin:0}
     p.lead{margin:0;color:var(--muted);font-size:13px}
 
@@ -174,7 +185,9 @@
   <div id="app" class="container">
     <header>
       <div class="brand">
-        <div class="logo">S</div>
+        <div class="logo">
+          <img src="icon/salon-app-icon.png" alt="Sunshine Men's Parlour Logo">
+        </div>
         <div>
           <h1>Sunshine Men's Parlour</h1>
           <p class="lead">— Style That Speaks</p>

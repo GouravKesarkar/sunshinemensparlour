@@ -1,6 +1,6 @@
   {
-    "name": "Gentlemen's Groom",
-    "short_name": "Groom",
+    "name": "Sunshine Men's Parlour",
+    "short_name": "My Salon",
     "description": "A simple PWA",
     "start_url": "index.html",
     "display": "standalone",

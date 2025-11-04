@@ -1,17 +1,17 @@
-  {
-    "name": "Sunshine Men's Parlour",
-    "short_name": "My Salon",
-    "description": "A simple PWA",
-    "start_url": "index.html",
-    "display": "standalone",
-    "background_color": "#0f172a",
-    "theme_color": "#0f172a",
-    "orientation": "portrait",
-    "icons": [
+{
+  "name": "Sunshine Men Parlour",
+  "short_name": "My Salon",
+  "description": "A simple PWA",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "icons": [
       {
-        "src": "icon/salon-app-icon.png",
-        "sizes": "192x192",
-        "type": "image/png"
+          "src": "icon/salon-app-icon_192.png",
+          "sizes": "192x192",
+          "type": "image/png"
       }
-    ]
-  }
+  ]
+}
